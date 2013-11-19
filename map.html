@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<!--/////////////////////////////////////
+BEGIN HEAD SECTION
+/////////////////////////////////////-->
+
+<head>
+	<!-- Stuff at the top -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<!-- Page Title -->
+	<title>Minnesota Watersheds</title>
+
+	<!-- Insert UMN Favicon -->
+	<link rel='shortcut icon' type='image/x-icon' href='http://www1.umn.edu/twincities/favicon.ico'/>
+
+	<!-- Link to the standard esri stylesheet -->
+  	<link rel="stylesheet" type="text/css" href="http://js.arcgis.com/3.7/js/esri/css/esri.css">
+
+  	<!-- Link to the dojo "claro" stylesheet for consistent styling of buttons, popups, etc. -->
+  	<link rel="stylesheet" type="text/css" href="http://js.arcgis.com/3.7/js/dojo/dijit/themes/claro/claro.css">
+
+  	<!-- Link to the ArcGIS API-->
+	<script src="http://js.arcgis.com/3.7/"></script>
+
+	<!-- Our Custom CSS Styles -->
+	<link href="mapStyle.css" type="text/css" rel="stylesheet">
+
+	<!--/////////////////////////////////////
+	Javascript in Head Section. Controls most functionality.
+	/////////////////////////////////////-->
+	<script type="text/javascript">
+
+		// Define variables for the map and geocoder elements
+		var map, dialog;
+
+		// Add some esri stuff to make the map
+		require([
+		    "esri/map", "esri/dijit/Geocoder", "esri/layers/FeatureLayer",
+	        "esri/symbols/SimpleFillSymbol", "esri/symbols/SimpleLineSymbol", 
+	        "esri/renderers/SimpleRenderer", "esri/graphic", "esri/lang",
+	        "dojo/_base/Color", "dojo/number", "dojo/dom-style", 
+	        "dijit/TooltipDialog", "dijit/popup", "dojo/domReady!",
+		],
+
+		function(Map, Geocoder, FeatureLayer, SimpleFillSymbol, SimpleLineSymbol, SimpleRenderer, Graphic, esriLang, Color, number, domStyle, TooltipDialog, dijitPopup) {
+
+			// Create the map
+		    map = new Map("mapDiv",{
+		       	basemap: "hybrid",
+		        center: [-94, 46], // lon, lat
+		        zoom: 7 
+		    });
+
+		    // Add the geocoder
+		    geocoder = new Geocoder({
+		    	map: map
+		    }, "search");
+		    geocoder.startup();
+
+		    // Create the major watersheds feature layer
+		    var majorWatersheds = new FeatureLayer("http://services.arcgis.com/8df8p0NlLFEShl0r/ArcGIS/rest/services/DNR_Majors/FeatureServer/0", {
+		    	mode: esri.layers.FeatureLayer.MODE_SNAPSHOT,
+		    	outFields: ["major_name", "acres", "sq_miles"]
+		    });
+
+		    // Symbolize the major watersheds feature layer
+			var symbol = new SimpleFillSymbol(
+          		SimpleFillSymbol.STYLE_SOLID, 
+          		new SimpleLineSymbol(
+            		SimpleLineSymbol.STYLE_SOLID, 
+            		new Color([255,255,255,0.25]), 0.5
+          		),
+          		new Color([101,216,237,0.25])
+        	);
+        	majorWatersheds.setRenderer(new SimpleRenderer(symbol));
+
+		    // Add the major layer to the map object	
+		    map.addLayer(majorWatersheds);
+
+		    // ------------------------------------------------------------
+		    // Add a bunch of crazy shit I copied from an Esri template...
+		    // ------------------------------------------------------------
+			map.infoWindow.resize(245,125);
+	        
+	        dialog = new TooltipDialog({
+	          id: "tooltipDialog",
+	          style: "position: absolute; width: 250px; font: normal normal normal 10pt Helvetica;z-index:100"
+	        });
+	        dialog.startup();
+	        
+	        var highlightSymbol = new SimpleFillSymbol(
+	          SimpleFillSymbol.STYLE_SOLID, 
+	          new SimpleLineSymbol(
+	            SimpleLineSymbol.STYLE_SOLID, 
+	            new Color([109,240,255]), 2
+	          ), 
+	          new Color([255,255,255,0.2])
+	        );
+
+	        //close the dialog when the mouse leaves the highlight graphic
+	        map.on("load", function(){
+	          map.graphics.enableMouseEvents();
+	          map.graphics.on("mouse-out", closeDialog);
+	          
+	        });
+	                
+	        //listen for when the onMouseOver event fires on the countiesGraphicsLayer
+	        //when fired, create a new graphic with the geometry from the event.graphic and add it to the maps graphics layer
+	        majorWatersheds.on("mouse-over", function(evt){
+	          var t = "<b>${major_name}</b><hr>"
+	          	+ "<b>Acres: </b>${acres:NumberFormat}<br>"
+	            + "<b>Square Miles: </b>${sq_miles:NumberFormat}";
+	  
+	          var content = esriLang.substitute(evt.graphic.attributes,t);
+	          var highlightGraphic = new Graphic(evt.graphic.geometry,highlightSymbol);
+	          map.graphics.add(highlightGraphic);
+	          
+	          dialog.setContent(content);
+
+	          domStyle.set(dialog.domNode, "opacity", 0.85);
+	          dijitPopup.open({
+	            popup: dialog, 
+	            x: evt.pageX,
+	            y: evt.pageY
+	          });
+	        });
+	    
+	        function closeDialog() {
+	          map.graphics.clear();
+	          dijitPopup.close(dialog);
+	        }
+
+		});
+
+
+		
+	</script>
+
+</head>
+<!-- END HEAD SECTION -->
+
+
+<!--/////////////////////////////////////
+BEGIN BODY SECTION (styled entirely by Dojo's "Claro" style)
+/////////////////////////////////////-->
+
+<body class = "claro">
+
+	<!-- Header -->
+	<div id="header">
+		<div id="title">
+			<h1>Minnesota Watersheds</h1>
+		</div>
+		<div id="links">
+			<ul id="headlinks">
+				<li id="headlinks"><a href="index.html">Home</a></li>
+				<li id="headlinks"><a href="sources.html">Sources</a></li>
+				<li id="headlinks"><a href="background.html">Background</a></li>
+				<li id="headlinks"><a href="gallery.html">Gallery</a></li>							
+			</ul>
+		</div>
+	</div>
+
+	<!-- Main Map -->
+	<div id="mapDiv"></div>
+
+	<!-- Geocoder -->
+	<div id="search"></div>
+
+</body>
+<!-- END BODY SECTION -->
+
+</html>
