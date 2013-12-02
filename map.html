@@ -63,23 +63,44 @@ BEGIN HEAD SECTION
 
 		    // Create the major watersheds feature layer
 		    var majorWatersheds = new FeatureLayer("http://services.arcgis.com/8df8p0NlLFEShl0r/ArcGIS/rest/services/DNR_Majors/FeatureServer/0", {
-		    	mode: esri.layers.FeatureLayer.MODE_SNAPSHOT,
-		    	outFields: ["major_name", "acres", "sq_miles"]
+		    	mode: esri.layers.FeatureLayer.MODE_ONDEMAND,
+		    	outFields: ["major_name", "acres", "sq_miles"],
+		    	// maxScale:1000000,
+		    	minScale:10000000,
 		    });
 
 		    // Symbolize the major watersheds feature layer
-			var symbol = new SimpleFillSymbol(
+			var symbolmaj = new SimpleFillSymbol(
           		SimpleFillSymbol.STYLE_SOLID, 
           		new SimpleLineSymbol(
             		SimpleLineSymbol.STYLE_SOLID, 
-            		new Color([255,255,255,0.25]), 0.5
+            		new Color([0, 233, 255, 1]), 1.25
           		),
-          		new Color([101,216,237,0.25])
+          		new Color([101,216,237,0.0])
         	);
-        	majorWatersheds.setRenderer(new SimpleRenderer(symbol));
+        	majorWatersheds.setRenderer(new SimpleRenderer(symbolmaj));
+
+        	// Create the minor watersheds feature layer
+		    var minorWatersheds = new FeatureLayer("http://services.arcgis.com/8df8p0NlLFEShl0r/arcgis/rest/services/DNR_Minors/FeatureServer/0", {
+		    	mode: esri.layers.FeatureLayer.MODE_ONDEMAND,
+		    	outFields: ["minor_name", "acres", "sq_miles"],
+		    	maxScale:50000,
+		    	minScale:1200000,
+		    });
+
+		    // Symbolize the minor watersheds feature layer
+			var symbolmin = new SimpleFillSymbol(
+          		SimpleFillSymbol.STYLE_SOLID, 
+          		new SimpleLineSymbol(
+            		SimpleLineSymbol.STYLE_SOLID, 
+            		new Color([0, 233, 255, 0.75]), 0.5
+          		),
+          		new Color([101,216,237,0.0])
+        	);
+        	minorWatersheds.setRenderer(new SimpleRenderer(symbolmin));
 
 		    // Add the major layer to the map object	
-		    map.addLayer(majorWatersheds);
+		    map.addLayers([minorWatersheds, majorWatersheds]);
 
 		    // ------------------------------------------------------------
 		    // Add a bunch of crazy shit I copied from an Esri template...
@@ -88,7 +109,7 @@ BEGIN HEAD SECTION
 	        
 	        dialog = new TooltipDialog({
 	          id: "tooltipDialog",
-	          style: "position: absolute; width: 250px; font: normal normal normal 10pt Helvetica;z-index:100"
+	          style: "position: absolute; width: 250px; font: normal normal normal 10pt Helvetica; z-index:100"
 	        });
 	        dialog.startup();
 	        
