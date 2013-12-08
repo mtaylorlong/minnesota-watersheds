@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<configuration>
+    <fields>
+        <field name="FID" alias="FID"/>
+        <field name="SCI_NAME" alias="SCI_NAME"/>
+        <field name="COM_NAME" alias="COM_NAME"/>
+        <field name="INV_TYPE" alias="INV_TYPE"/>
+        <field name="LOCALITY" alias="LOCALITY"/>
+        <field name="DOWLKNUM" alias="DOWLKNUM"/>
+        <field name="X" alias="X"/>
+        <field name="Y" alias="Y"/>
+        <field name="FIRST_OBS" alias="FIRST_OBS"/>
+        <field name="NUM_OBS" alias="NUM_OBS"/>
+        <field name="SITE" alias="SITE"/>
+        <field name="COUNTY" alias="COUNTY"/>
+    </fields>
+    <showattachments>false</showattachments>
+    <showrelatedrecords>false</showrelatedrecords>
+</configuration>

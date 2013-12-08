@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<configuration>
+    <width>0</width>
+    <height>0</height>
+    <content><![CDATA[ <p align='center'>
+Welcome to the watershed search tool!<br>
+Use the locator (red bull's eye) to find your address. Then click on a minor watershed to reveal it's ID number. Open the Upstream tool and enter the ID to reveal the catchment basins upstream from yours.
+</p>
+       ]]></content>
+    <labels>
+        <btnlabel>OK</btnlabel>
+    </labels>
+</configuration>

@@ -8,11 +8,9 @@ body {
 	font-family: Arial, sans-serif;
 	color: #606060;
 }
-
 .titleTextCentered {
 	text-align: center;
 }
-
 #nav {
 	border: 1px solid #E8E8E8;
 	border-width: 1px 0;
@@ -21,33 +19,27 @@ body {
 	padding: 0;
 	text-align: center;
 }
-
 #nav li {
 	display: inline;
 }
-
 #nav a {
 	display: inline-block;
 	padding: 10px;
 }
-
 a {
 	color: #0099CC;
 	text-decoration: none;
 	font-weight: bold;
 }
-
 a:hover {
 	text-decoration: underline;
 }
-
 .image {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	width: 100%;
 }
-
 .caption {
 	display: block;
 	margin-left: auto;
@@ -55,6 +47,10 @@ a:hover {
 	width: 75%;
 	font-size: 80%;
 	line-height: 50%;
+}
+
+.title {
+	text-align: center;
 }
 
 

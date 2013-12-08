@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+<configuration>
+    <fields>
+        <field name="AREA" alias="AREA"/>
+        <field name="PERIMETER" alias="PERIMETER"/>
+        <field name="HPOI_CLASS" alias="HPOI_CLASS"/>
+        <field name="DOWGAGEID" alias="DOWGAGEID"/>
+        <field name="NID_ID" alias="NID_ID"/>
+        <field name="MAJOR" alias="MAJOR"/>
+        <field name="MINOR5" alias="MINOR5"/>
+        <field name="HPOI_ID" alias="HPOI_ID"/>
+        <field name="CATCH_ID" alias="CATCH_ID" visible="true"/>
+        <field name="HYDROID" alias="HYDROID"/>
+        <field name="DOWLKNUM" alias="DOWLKNUM"/>
+        <field name="LAKE_AC" alias="LAKE_AC"/>
+        <field name="DOWN_CAT" alias="DOWN_CAT"/>
+        <field name="NEXTDOWNID" alias="NEXTDOWNID"/>
+        <field name="UP_COUNT" alias="UP_COUNT"/>
+        <field name="UPADJ_CAT" alias="UPADJ_CAT"/>
+        <field name="CATCH_AC" alias="CATCH_AC"/>
+        <field name="TOT_SHED_A" alias="TOT_SHED_A"/>
+        <field name="NCONTRB_A" alias="NCONTRB_A"/>
+        <field name="CONTRIB_A" alias="CONTRIB_A"/>
+        <field name="PW_AC" alias="PW_AC"/>
+        <field name="NWI_AC" alias="NWI_AC"/>
+        <field name="DCA_RAT" alias="DCA_RAT"/>
+        <field name="TOT_RATIO" alias="TOT_RATIO"/>
+        <field name="LK_RATIO" alias="LK_RATIO"/>
+        <field name="STO_RATIO" alias="STO_RATIO"/>
+        <field name="CONTB_RAT" alias="CONTB_RAT"/>
+        <field name="HUC_2" alias="HUC_2"/>
+        <field name="HUC_4" alias="HUC_4"/>
+        <field name="HUC_6" alias="HUC_6"/>
+        <field name="HUC_8" alias="HUC_8"/>
+        <field name="HUC_10" alias="HUC_10"/>
+        <field name="HUC_12" alias="HUC_12"/>
+        <field name="STATES" alias="STATES"/>
+        <field name="HU_10_DS" alias="HU_10_DS"/>
+        <field name="HU_10_NAME" alias="HU_10_NAME"/>
+        <field name="HU_10_MOD" alias="HU_10_MOD"/>
+        <field name="HU_10_TYPE" alias="HU_10_TYPE"/>
+        <field name="HU_12_DS" alias="HU_12_DS"/>
+        <field name="HU_12_NAME" alias="HU_12_NAME"/>
+        <field name="HU_12_MOD" alias="HU_12_MOD"/>
+        <field name="HU_12_TYPE" alias="HU_12_TYPE"/>
+        <field name="HU_10_GNIS" alias="HU_10_GNIS"/>
+        <field name="HU_12_GNIS" alias="HU_12_GNIS"/>
+        <field name="Shape_Leng" alias="Shape_Leng"/>
+        <field name="Shape_Length" alias="Shape_Length"/>
+        <field name="Shape_Area" alias="Shape_Area"/>
+    </fields>
+    <showattachments>false</showattachments>
+    <showrelatedrecords>false</showrelatedrecords>
+</configuration>

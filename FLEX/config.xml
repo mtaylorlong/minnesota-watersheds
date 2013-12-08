@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<configuration>
+    <title>Watersheds of Minnesota</title>
+    <logo>assets/images/logo.png</logo>
+    <style>
+        <colors>0xffffff,0x3366,0x6633,0x990099,0xffd700</colors>
+        <alpha>0.37</alpha>
+        <font name="Verdana"/>
+        <titlefont name="Verdana"/>
+        <subtitlefont name="Verdana"/>
+    </style>
+    <!-- replace the following url with your own geometryservice -->
+    <geometryservice url="https://utility.arcgisonline.com/arcgis/rest/services/Geometry/GeometryServer"/>
+    <widget url="widgets/Navigation/NavigationWidget.swf" config="widgets/Navigation/NavigationWidget.xml" left="10" top="50"/>
+    <widget url="widgets/OverviewMap/OverviewMapWidget.swf" config="widgets/OverviewMap/OverviewMapWidget.xml" right="0" bottom="0"/>
+    <widget url="widgets/HeaderController/HeaderControllerWidget.swf" config="widgets/HeaderController/HeaderControllerWidget.xml" left="0" top="0"/>
+    <widget url="widgets/MapSwitcher/MapSwitcherWidget.swf" config="widgets/MapSwitcher/MapSwitcherWidget.xml" right="20" top="55"/>
+    <map attributionvisible="true" esrilogovisible="true" openhandcursorvisible="false" scalebarvisible="true" scalebar="us" zoomslidervisible="false" wraparound180="true" addarcgisbasemaps="true" initialextent="-11095231.576367686 5358722.762815725 -9736486.96157076 6262514.1852594055" wkid="102100" top="40" portalurl="https://umn.maps.arcgis.com/">
+        <basemaps>
+            <layer type="tiled" label="Imagery with Labels" icon="https://umn.maps.arcgis.com/sharing/rest/content/items/413fd05bbd7342f5991d5ec96f4f8b18/info/thumbnail/tempimagery_with_labels_ne_usa.png" url="http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer" visible="true"/>
+            <layer type="tiled" label="Imagery with Labels" url="http://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer" visible="true" reference="true"/>
+        </basemaps>
+        <operationallayers>
+            <layer type="feature" label="Major Watersheds" alpha="0.5" icon="https://umn.maps.arcgis.com/sharing/rest/content/items/db08e244723847688f7b8b4c16280290/info/thumbnail/ago_downloaded.png?token=incb4XYfgqQTQqCGLSRVHCKtWAbBCal10AAMrdnbEP13Xz5u%2DK0F%2DRrhBnAi3XMw0Q7vKSXEibfXJS%2DZhUaR3sRgy4QJ2WhAsG61dyzJuhzrOzwznQF2lV7QuU7SO%5FCkSKND%2DwT6kMEj4bt1fM2%2D1Km2%5FOtCjb4NQA3%2Dv%2DFfnFGuWN%2DVPRDK3dcYTKT2wmaz" url="http://services.arcgis.com/8df8p0NlLFEShl0r/arcgis/rest/services/Minnesota_major_watershed_basins/FeatureServer/0" mode="onDemand" visible="false"/>
+            <layer type="feature" label="Minor Watersheds (Catchment Basins)" alpha="0.7" url="http://23.20.61.55:6080/arcgis/rest/services/Watersheds/DNR_Level08/MapServer/0" popupconfig="popups/PopUp_6.xml" mode="onDemand" visible="true"/>
+            <layer type="feature" label="Invasives by Category" url="http://23.20.61.55:6080/arcgis/rest/services/Watersheds/Invasives_by_Category_minus_purple_loosestrife/MapServer/0" mode="onDemand" visible="false"/>
+            <layer type="feature" label="Invasives by Species" url="http://23.20.61.55:6080/arcgis/rest/services/Watersheds/Invasives_by_Species/MapServer/0" popupconfig="popups/PopUp_1.xml" mode="onDemand" visible="false"/>
+        </operationallayers>
+    </map>
+    <widgetcontainer layout="float">
+        <widget url="widgets/Locate/LocateWidget.swf" config="widgets/Locate/LocateWidget_1.xml" label="Address Finder" icon="assets/images/i_target.png" preload="open"/>
+        <widget url="widgets/Geoprocessing/GeoprocessingWidget.swf" config="widgets/Geoprocessing/GeoprocessingWidget_1.xml" label="Upstream Catchment Finder" icon="assets/images/i_widget.png"/>
+        <widget url="widgets/Query/QueryWidget.swf" config="widgets/Query/QueryWidget_2.xml" label="Search Invasive Species" icon="assets/images/GenericSearch32.png"/>
+    </widgetcontainer>
+</configuration>
