@@ -18,11 +18,12 @@
 	<!-- Site Navigation -->
 	<ul id="nav">
 		<li><a href="index.html">Home</a></li>
-		<li><a href="map.html">Explore Watersheds</a></li>
-		<li><a href="FLEX/index.html">Upstream/Downstream Finder</a></li>
+		<li><a href="watershed.html">Watershed</a></li>		
+		<li><a href="explore.html">Explore</a></li>
+		<li><a href="FLEX/index.html">Upstream/Downstream</a></li>
+		<li><a href="gallery.html">Gallery</a></li>
 		<li><a href="sources.html">Sources</a></li>
 		<li><a href="background.html">Background</a></li>
-		<li><a href="gallery.html">Gallery</a></li>
 	</ul>
 
 	<!-- Page Title -->
@@ -33,10 +34,34 @@
 	<!-- Page Text -->
 	<div>
 
-		<p>This is the project background page. This page should describe why we chose the topic we did, lesson's learned and enhancements to the interactive mapping application we would have developed if we had more time, resources and experience with programming.</p>
+		<h3>Project Rationale</h3>
+
+		<p>We believe that access to fresh water will be a critical issue in our lifetime. As such, it is important to begin to educate the public about water - how it moves through the landscape, where it comes from, where it goes. Our group set out to develop a site to accomplish three goals: <br>
+			<ol>
+				<li>Introduce the concept of a watershed.</li>
+				<li>Allow the user to locate on a map the watershed in which they live.</li>
+				<li>Reveal to the user what’s upstream and downstream of their watershed.</li>
+			</ol>
+		</p>
 		
-		<p>This page should include a discussion and figures for options to enhance our application. Brian expects this to be similar to a 2 page class paper.</p>
+		<p>To introduce the concept of a watershed, we first offer background information about watersheds and HUC’s on our Watersheds page. Once the user is comfortable with the concept of watersheds, we offer a simple interactive map on our Explore page in which the user can search for a location and view the names of major or minor watersheds simply by hovering with the mouse. Finally, we offer an Upstream/Downstream page where the user can look up a catchment ID and enter that ID in a tool that reveals their upstream or downstream catchments.</p>
+
+		<h3>Methodology</h3>
+
+		<p>We built our Explore map using the ArcGIS API for javascript. This allowed us to easily incorporate esri’s satellite basemap and our major and minor watershed layers hosted as a service in an ArcGIS online account. The mouse-over feature identification was adapted from <a href="https://developers.arcgis.com/en/javascript/jssamples/fl_hover.html">this example</a> on the API reference site. </p>
 		
+		<p>We built out Upstream/Downstream map using ArcGIS Viewer for Flex. The flex viewer offered a relatively simple way to create a custom geoprocessing service without getting too deep into the behind-the-scenes browser/server stuff. To create our custom geoprocessing tool, we started with a script from MNDNR that identified upstream or downstream catchments based on catchment ID using other values hard-coded into the attributes of the referenced shapefile. After modifying the script to return a shapefile, we published the script as a service on our class ArcServer. The we constructed a geoprocessing widget in FLEX modelled after the <a href="http://resources.arcgis.com/en/help/flex-viewer/concepts/index.html#//01m30000003t000000">drive-time widget</a>. </p>
+
+		<p>After using the Upstream/Downstream tool, the user can dive a bit deeper into watershed issues by turning on layers that reveal sightings of invasive species in Minnesota. Users eager for even more information might take a gander at our gallery where we display stand-alone maps from the Watershed page as well as another map showing population data for Minnesota watersheds. </p>
+
+		<h3>Lessons Learned</h3>
+
+		<p>We attempted to build all the mapping functionality into one map using just the ArcGIS API for javascript. However, our inexperience with javascript made this a real challenge. In the end, we resorted to using the FLEX viewer to achieve our final Upstream/Downstream goal because we couldn’t quite figure it out using the javascript API alone. We learned that when you design a project that relies on programming languages unfamiliar to the group, scoping for time and deliverables is difficult and risky. Our final solution of two separate maps is not ideal, but we felt it still accomplished our overall goals and highlighted the respectable progress we made throughout the semester in learning these new skills. </p>
+
+		<h3>Future Enhancements</h3>
+
+		<p>Given more time (mostly to learn more javascript), we’d love to streamline the site into one interactive map. We would build the map using the ArcGIS API for javascript and incorporate our geoprocessing service into this map in a clean, unobtrusive manner. A site like this could really be powerful if it generated an automatic report for the user of their watershed, its upstream and downstream surroundings, and other statistics and useful water-related information catered to their point of interest. Finally, we believe that a 3-dimensional view of the landscape would offer a much more intuitive view of watersheds. Building in the option of viewing our map from an oblique angle with exaggerated elevation could really help the user understand the watershed as a real physical feature of the landscape. </p>
+
 	</div>
 
 </body>
