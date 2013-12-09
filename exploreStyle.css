@@ -1,0 +1,110 @@
+/*----------------------------------*/
+/* Style.css						*/
+/* Our custom styles				*/
+/*----------------------------------*/
+
+html, body, #mapDiv {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #303030;
+	font-family: arial, sans-serif;
+}
+#search {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    top: 75px;
+    left: 60px;
+}
+
+#header {
+	position: absolute;
+	top:0px;
+	width: 100%;
+	color: #ffffff;
+	background-color: rgba(48, 48, 48, 0.8);
+	border-bottom: 1px solid white;
+}
+
+#title {
+	float:left;
+	padding-left: 20px;
+	font-size: 75%;
+}
+
+#links {
+	float: right;
+	margin-top: 10px;
+	padding-right: 20px;
+	font-size: 85%;
+}
+
+#headlinks ul {
+	list-style-type: none;
+}
+
+#headlinks li {
+	display: inline;
+	padding-right: 8px;
+}
+
+#headlinks a {
+	color: #ccf7ff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#headlinks a:hover {
+	text-decoration: underline;
+}
+
+#legendDiv {
+      background-color: #fff;
+      position: absolute !important;
+      z-index: 99;
+      top:5px;
+      right:20px;
+    }
+
+.esriSimpleSliderTL {
+	top: 75px;
+	left: 15px;
+}
+
+/*Map Information*/
+.infobox {
+	display:block;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 250px;
+    background: rgba(40, 40, 40, 0.8);
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    z-index: 5;
+}
+h3.info {
+    /*font-size:100%;*/
+    line-height: 0.25em;
+    color: #ffffff;
+}
+
+p.info {
+    font-size: 90%;
+    color:#e8e8e8;
+}
+
+a.info {
+    text-decoration: none;
+    color: inherit;
+}
+
+a.info:hover {
+    text-decoration: underline;
+}

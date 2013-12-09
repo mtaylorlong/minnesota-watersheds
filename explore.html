@@ -12,7 +12,7 @@ BEGIN HEAD SECTION
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 
 	<!-- Page Title -->
-	<title>Minnesota Watersheds</title>
+	<title>Explore Watersheds</title>
 
 	<!-- Insert UMN Favicon -->
 	<link rel='shortcut icon' type='image/x-icon' href='http://www1.umn.edu/twincities/favicon.ico'/>
@@ -27,7 +27,7 @@ BEGIN HEAD SECTION
 	<script src="http://js.arcgis.com/3.7/"></script>
 
 	<!-- Our Custom CSS Styles -->
-	<link href="mapStyle.css" type="text/css" rel="stylesheet">
+	<link href="exploreStyle.css" type="text/css" rel="stylesheet">
 
 	<!--/////////////////////////////////////
 	Javascript in Head Section. Controls most functionality.
@@ -51,8 +51,8 @@ BEGIN HEAD SECTION
 			// Create the map
 		    map = new Map("mapDiv",{
 		       	basemap: "hybrid",
-		        center: [-94, 46], // lon, lat
-		        zoom: 7 
+		        center: [-94, 46.5], // lon, lat
+		        zoom: 6 
 		    });
 
 		    // Add the geocoder
@@ -99,11 +99,11 @@ BEGIN HEAD SECTION
         	);
         	minorWatersheds.setRenderer(new SimpleRenderer(symbolmin));
 
-		    // Add the major layer to the map object	
-		    map.addLayers([minorWatersheds, majorWatersheds]);
+		    // Add the major and minor layer to the map object	
+		    map.addLayers([majorWatersheds, minorWatersheds]);
 
 		    // ------------------------------------------------------------
-		    // Add a bunch of crazy shit I copied from an Esri template...
+		    // Add a bunch of crazy stuff I copied from an Esri template... MAJOR POPUP
 		    // ------------------------------------------------------------
 			map.infoWindow.resize(245,125);
 	        
@@ -129,10 +129,10 @@ BEGIN HEAD SECTION
 	          
 	        });
 	                
-	        //listen for when the onMouseOver event fires on the countiesGraphicsLayer
+	        //listen for when the onMouseOver event fires on the majorWatersheds graphic
 	        //when fired, create a new graphic with the geometry from the event.graphic and add it to the maps graphics layer
 	        majorWatersheds.on("mouse-over", function(evt){
-	          var t = "<b>${major_name}</b><hr>"
+	          var t = "<b>Major Watershed: <em>${major_name}</em></b><hr>"
 	          	+ "<b>Acres: </b>${acres:NumberFormat}<br>"
 	            + "<b>Square Miles: </b>${sq_miles:NumberFormat}";
 	  
@@ -149,7 +149,29 @@ BEGIN HEAD SECTION
 	            y: evt.pageY
 	          });
 	        });
+
+	        //listen for when the onMouseOver event fires on the minorWatersheds graphic
+	        //when fired, create a new graphic with the geometry from the event.graphic and add it to the maps graphics layer
+	        minorWatersheds.on("mouse-over", function(evt){
+	          var t = "<b>Minor Watershed: <em>${minor_name}</em></b><hr>"
+	          	+ "<b>Acres: </b>${acres:NumberFormat}<br>"
+	            + "<b>Square Miles: </b>${sq_miles:NumberFormat}";
+	  
+	          var content = esriLang.substitute(evt.graphic.attributes,t);
+	          var highlightGraphic = new Graphic(evt.graphic.geometry,highlightSymbol);
+	          map.graphics.add(highlightGraphic);
+	          
+	          dialog.setContent(content);
+
+	          domStyle.set(dialog.domNode, "opacity", 0.85);
+	          dijitPopup.open({
+	            popup: dialog, 
+	            x: evt.pageX,
+	            y: evt.pageY
+	          });
+	        });	       
 	    
+
 	        function closeDialog() {
 	          map.graphics.clear();
 	          dijitPopup.close(dialog);
@@ -171,10 +193,13 @@ BEGIN BODY SECTION (styled entirely by Dojo's "Claro" style)
 
 <body class = "claro">
 
+	<!-- Main Map -->
+	<div id="mapDiv"></div>
+
 	<!-- Header -->
 	<div id="header">
 		<div id="title">
-			<h1>Minnesota Watersheds</h1>
+			<h1>Explore Minnesota's Watersheds</h1>
 		</div>
 		<div id="links">
 			<ul id="headlinks">
@@ -187,11 +212,13 @@ BEGIN BODY SECTION (styled entirely by Dojo's "Claro" style)
 		</div>
 	</div>
 
-	<!-- Main Map -->
-	<div id="mapDiv"></div>
-
 	<!-- Geocoder -->
 	<div id="search"></div>
+
+	<div class="infobox">
+        <p class="info">
+             <strong style="color:#ffffff;">Find your Watershed: </strong> The <a href="http://www.dnr.state.mn.us/" class="info">Minnesota Department of Natural Resources</a> defines major and minor watershed in the state of Minnesota. Hover over the map to learn the name of major watersheds. Zoom in closer to reveal minor watersheds and learn their names. Enter your address, city, or zip code in the search bar (top left) to zoom the map to your location of interest. </p>
+    </div>
 
 </body>
 <!-- END BODY SECTION -->
