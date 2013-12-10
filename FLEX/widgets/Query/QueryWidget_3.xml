@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<configuration>
+    <layer>http://services.arcgis.com/8df8p0NlLFEShl0r/arcgis/rest/services/DNR_Level08/FeatureServer/0</layer>
+    <query/>
+    <titlefield>AREA</titlefield>
+    <linkfield/>
+    <refreshrate/>
+    <zoomscale/>
+    <shareresults>false</shareresults>
+    <orderbyfields>AREA ASC</orderbyfields>
+    <fields all="false">
+        <field name="AREA" alias="AREA"/>
+        <field name="CATCH_ID" alias="CATCH_ID"/>
+    </fields>
+</configuration>

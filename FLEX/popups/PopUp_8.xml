@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<configuration>
+    <fields>
+        <field name="FID" alias="FID"/>
+        <field name="major" alias="major"/>
+        <field name="major_name" alias="major_name"/>
+        <field name="acres" alias="acres"/>
+        <field name="sq_miles" alias="sq_miles"/>
+        <field name="prod_year" alias="prod_year"/>
+        <field name="source" alias="source"/>
+    </fields>
+    <showattachments>false</showattachments>
+    <showrelatedrecords>false</showrelatedrecords>
+</configuration>

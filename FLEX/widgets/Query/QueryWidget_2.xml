@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<configuration>
+    <layer>http://23.20.61.55:6080/arcgis/rest/services/Watersheds/Invasives_by_Species/MapServer/0</layer>
+    <query/>
+    <titlefield>COM_NAME</titlefield>
+    <linkfield/>
+    <refreshrate/>
+    <zoomscale/>
+    <shareresults>false</shareresults>
+    <orderbyfields>COM_NAME ASC</orderbyfields>
+    <fields all="false">
+        <field name="COM_NAME" alias="COM_NAME"/>
+        <field name="SCI_NAME" alias="SCI_NAME"/>
+        <field name="FIRST_OBS" alias="FIRST_OBS"/>
+        <field name="NUM_OBS" alias="NUM_OBS"/>
+        <field name="SITE" alias="SITE"/>
+    </fields>
+</configuration>

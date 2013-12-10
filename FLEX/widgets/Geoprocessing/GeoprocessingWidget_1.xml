@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<configuration>
+    <description/>
+    <taskurl>http://23.20.61.55:6080/arcgis/rest/services/Watersheds/ReturnCatchmentPolygons/GPServer/newscript</taskurl>
+    <helpurl>http://23.20.61.55:6080/arcgis/rest/directories/arcgisoutput/Watersheds/ReturnCatchmentPolygons_GPServer/Watersheds_ReturnCatchmentPolygons/edited.htm</helpurl>
+    <autosubmit>false</autosubmit>
+    <shareresults>false</shareresults>
+    <inputparams>
+        <param type="string" name="catchID" required="true" visible="true" label="catchID" defaultvalue="4001300" tooltip="Click on location in MN to view upstream catchments"/>
+    </inputparams>
+    <outputparams>
+        <param type="featurerecordset" name="outFC" geometrytype="polygon" mode="drawtool" required="true" visible="true" label="outFC">
+            <popup>
+                <fields>
+                    <field name="AREA" label="AREA" visible="true"/>
+                    <field name="PERIMETER" label="PERIMETER" visible="true"/>
+                    <field name="HPOI_CLASS" label="HPOI_CLASS" visible="true"/>
+                    <field name="DOWGAGEID" label="DOWGAGEID" visible="true"/>
+                    <field name="NID_ID" label="NID_ID" visible="true"/>
+                    <field name="MAJOR" label="MAJOR" visible="true"/>
+                    <field name="MINOR5" label="MINOR5" visible="true"/>
+                    <field name="HPOI_ID" label="HPOI_ID" visible="true"/>
+                    <field name="CATCH_ID" label="CATCH_ID" visible="true"/>
+                    <field name="HYDROID" label="HYDROID" visible="true"/>
+                    <field name="DOWLKNUM" label="DOWLKNUM" visible="true"/>
+                    <field name="LAKE_AC" label="LAKE_AC" visible="true"/>
+                    <field name="DOWN_CAT" label="DOWN_CAT" visible="true"/>
+                    <field name="NEXTDOWNID" label="NEXTDOWNID" visible="true"/>
+                    <field name="UP_COUNT" label="UP_COUNT" visible="true"/>
+                    <field name="UPADJ_CAT" label="UPADJ_CAT" visible="true"/>
+                    <field name="CATCH_AC" label="CATCH_AC" visible="true"/>
+                    <field name="TOT_SHED_A" label="TOT_SHED_A" visible="true"/>
+                    <field name="NCONTRB_A" label="NCONTRB_A" visible="true"/>
+                    <field name="CONTRIB_A" label="CONTRIB_A" visible="true"/>
+                    <field name="PW_AC" label="PW_AC" visible="true"/>
+                    <field name="NWI_AC" label="NWI_AC" visible="true"/>
+                    <field name="DCA_RAT" label="DCA_RAT" visible="true"/>
+                    <field name="TOT_RATIO" label="TOT_RATIO" visible="true"/>
+                    <field name="LK_RATIO" label="LK_RATIO" visible="true"/>
+                    <field name="STO_RATIO" label="STO_RATIO" visible="true"/>
+                    <field name="CONTB_RAT" label="CONTB_RAT" visible="true"/>
+                    <field name="HUC_2" label="HUC_2" visible="true"/>
+                    <field name="HUC_4" label="HUC_4" visible="true"/>
+                    <field name="HUC_6" label="HUC_6" visible="true"/>
+                    <field name="HUC_8" label="HUC_8" visible="true"/>
+                    <field name="HUC_10" label="HUC_10" visible="true"/>
+                    <field name="HUC_12" label="HUC_12" visible="true"/>
+                    <field name="STATES" label="STATES" visible="true"/>
+                    <field name="HU_10_DS" label="HU_10_DS" visible="true"/>
+                    <field name="HU_10_NAME" label="HU_10_NAME" visible="true"/>
+                    <field name="HU_10_MOD" label="HU_10_MOD" visible="true"/>
+                    <field name="HU_10_TYPE" label="HU_10_TYPE" visible="true"/>
+                    <field name="HU_12_DS" label="HU_12_DS" visible="true"/>
+                    <field name="HU_12_NAME" label="HU_12_NAME" visible="true"/>
+                    <field name="HU_12_MOD" label="HU_12_MOD" visible="true"/>
+                    <field name="HU_12_TYPE" label="HU_12_TYPE" visible="true"/>
+                    <field name="HU_10_GNIS" label="HU_10_GNIS" visible="true"/>
+                    <field name="HU_12_GNIS" label="HU_12_GNIS" visible="true"/>
+                    <field name="Shape_Leng" label="Shape_Leng" visible="true"/>
+                    <field name="Shape_Length" label="Shape_Length" visible="true"/>
+                    <field name="Shape_Area" label="Shape_Area" visible="true"/>
+                </fields>
+                <medias/>
+                <showattachments>false</showattachments>
+                <showrelatedrecords>false</showrelatedrecords>
+            </popup>
+            <renderer type="simple">
+                <defaultsymbol type="simplefill" alpha="0.5" color="0x000000">
+                    <outline color="0x000000" width="2"/>
+                </defaultsymbol>
+            </renderer>
+        </param>
+    </outputparams>
+    <layerorder>outFC</layerorder>
+</configuration>
