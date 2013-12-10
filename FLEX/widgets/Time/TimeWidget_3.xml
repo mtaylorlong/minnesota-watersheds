@@ -5,7 +5,7 @@
     <singlethumbastimeinstant>false</singlethumbastimeinstant>
     <thumbcount>1</thumbcount>
     <thumbmovingrate>1000</thumbmovingrate>
-    <timeextent setfromlayer="Zebra Mussels"/>
+    <timeextent setfromlayer="Eurasian watermilfoil"/>
     <timestops>
         <timestopsinterval>1</timestopsinterval>
         <timestopsunits>years</timestopsunits>

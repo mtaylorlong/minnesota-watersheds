@@ -1,7 +1,9 @@
 <?xml version="1.0" ?>
 <configuration>
+    <title>Watershed Catchments</title>
     <fields>
         <field name="FID" alias="FID"/>
+        <field name="CATCH_ID" alias="Catchment ID" visible="true"/>
         <field name="AREA" alias="AREA"/>
         <field name="PERIMETER" alias="PERIMETER"/>
         <field name="HPOI_CLASS" alias="HPOI_CLASS"/>
@@ -10,7 +12,6 @@
         <field name="MAJOR" alias="MAJOR"/>
         <field name="MINOR5" alias="MINOR5"/>
         <field name="HPOI_ID" alias="HPOI_ID"/>
-        <field name="CATCH_ID" alias="CATCH_ID" visible="true"/>
         <field name="HYDROID" alias="HYDROID"/>
         <field name="DOWLKNUM" alias="DOWLKNUM"/>
         <field name="LAKE_AC" alias="LAKE_AC"/>

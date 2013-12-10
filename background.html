@@ -53,11 +53,16 @@
 
 		<h3>Methodology</h3>
 
-		<p>We built our Explore map using the ArcGIS API for javascript. This allowed us to easily incorporate esri's satellite basemap and our major and minor watershed layers hosted as a service in an ArcGIS online account. The mouse-over feature identification was adapted from <a href="https://developers.arcgis.com/en/javascript/jssamples/fl_hover.html">this example</a> on the API reference site. Because the minor watersheds layer contains so many features, we made it scale-dependent so it would only render after zooming in 3 more levels. This functionality not only keeps the initial rendering of the map simple, but also illustrates the idea of minor watersheds being smaller sub-segments of larger ones.</p>
+		<p>
+			<div class="inline">
+				<img style="width:100%;" src="images/addressFinder.png">
+				<img style="width:100%;" src="images/watershedID.png"> 
+			</div>
+		We built our Explore map using the ArcGIS API for javascript. This allowed us to easily incorporate esri's satellite basemap and our major and minor watershed layers hosted as a service in an ArcGIS online account. The mouse-over feature identification was adapted from <a href="https://developers.arcgis.com/en/javascript/jssamples/fl_hover.html">this example</a> on the API reference site. Because the minor watersheds layer contains so many features, we made it scale-dependent so it would only render after zooming in 3 more levels. This functionality not only keeps the initial rendering of the map simple, but also illustrates the idea of minor watersheds being smaller sub-segments of larger ones.</p>
 		
 		<p>We built the Upstream/Downstream map using ArcGIS Viewer for Flex. The flex viewer offered a relatively simple way to create an interface for using a custom geoprocessing service without getting too deep into the behind-the-scenes browser/server requirements. To create our custom geoprocessing tool, we started with a script from MN DNR that identified upstream or downstream catchments based on catchment ID using upstream/downstream IDs that were hard-coded into the attributes of the referenced shapefile. After modifying the script to return a graphic, we published the script as a <a href="http://23.20.61.55:6080/arcgis/rest/services/Watersheds/ReturnCatchmentPolygons/GPServer">hosted service</a> on our class ArcServer. The we constructed a geoprocessing widget in FLEX modelled after the <a href="http://resources.arcgis.com/en/help/flex-viewer/concepts/index.html#//01m30000003t000000">drive-time widget</a>. </p>
 
-		<p>After using the Upstream/Downstream tool, the user can dive a bit deeper into watershed issues by turning on layers that reveal sightings of invasive species in Minnesota. Users eager for even more information might take a gander at our gallery where we display stand-alone maps from the Watershed page as well as another map showing population data for Minnesota watersheds. </p>
+		<p>After using the Upstream/Downstream tool, the user can dive a bit deeper into watershed issues by turning on layers that reveal sightings of invasive species in Minnesota. We created three widgets that show the "spread" of aquatic invasive species as reported within the MN DNR. Users eager for even more information might take a gander at our gallery where we display stand-alone maps from the Watershed page as well as another map showing population data for Minnesota watersheds. </p>
 
 		<h3>Lessons Learned</h3>
 

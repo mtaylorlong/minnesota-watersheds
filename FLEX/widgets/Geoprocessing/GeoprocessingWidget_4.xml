@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<configuration>
+    <description/>
+    <taskurl>http://23.20.61.55:6080/arcgis/rest/services/Watersheds/LastTry/GPServer/returnPolygon</taskurl>
+    <helpurl>http://23.20.61.55:6080/arcgis/rest/directories/arcgisoutput/Watersheds/LastTry_GPServer/Watersheds_LastTry/edited.htm</helpurl>
+    <autosubmit>false</autosubmit>
+    <shareresults>false</shareresults>
+    <inputparams>
+        <param type="string" name="catchID" required="true" visible="true" label="level 08 catchment ID" defaultvalue="3305300"/>
+        <param type="boolean" name="up" required="true" visible="true" label="Upstream"/>
+    </inputparams>
+    <outputparams>
+        <param type="featurerecordset" name="outFC" geometrytype="polygon" mode="drawtool" required="true" visible="true" label="Drainage area">
+            <popup>
+                <fields>
+                    <field name="Shape_Length" label="Shape_Length" visible="true"/>
+                    <field name="Shape_Area" label="Shape_Area" visible="true"/>
+                </fields>
+                <medias/>
+                <showattachments>false</showattachments>
+                <showrelatedrecords>false</showrelatedrecords>
+            </popup>
+            <renderer type="simple">
+                <defaultsymbol type="simplefill" alpha="0.2" color="0xFF3300">
+                    <outline color="0xFFFFFF" width="2"/>
+                </defaultsymbol>
+            </renderer>
+        </param>
+    </outputparams>
+    <layerorder>outFC</layerorder>
+</configuration>

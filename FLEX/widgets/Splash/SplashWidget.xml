@@ -2,11 +2,9 @@
 <configuration>
     <width>0</width>
     <height>0</height>
-    <content><![CDATA[ <p align='center'>
-Welcome to the watershed search tool!<br>
-Use the locator (red bull's eye) to find your address. Then click on a minor watershed to reveal it's ID number. Open the Upstream tool and enter the ID to reveal the catchment basins upstream from yours.
-</p>
-       ]]></content>
+    <content><![CDATA[<p><strong>Welcome to the Upstream Watershed Finder!</strong></p>
+<p>Enter your address, zip code, or city to zoom the map to your location of interest. Then click on a watershed catchment to look up it's ID. Enter that ID in the Upstream Tool, then click submit. Wait a moment for the application to generate your upstream watersheds.</p>
+<p>Once you're done with that, turn on other layers with the More... tab to view aquatic invasive species reports throughout the state.</p>]]></content>
     <labels>
         <btnlabel>OK</btnlabel>
     </labels>
